@@ -1,9 +1,17 @@
 <template>
-  <NDataTable remote v-if="users" :data="users" :columns="columns" />
+  <div class="px-[40px] py-[32px] flex flex-col gap-[32px]">
+    <div class="flex flex-row items-center justify-between">
+      <span class="text-[24px] font-bold">Users</span>
+      <NButton>
+        <span class="text-[14px]">新規登録</span>
+      </NButton>
+    </div>
+    <NDataTable remote v-if="users" :data="users" :columns="columns" />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { NDataTable, type DataTableColumns } from "naive-ui";
+import { NButton, NDataTable, type DataTableColumns } from "naive-ui";
 import type { User } from "~/models/user";
 
 const { data: users } = useFetch<User[]>(
