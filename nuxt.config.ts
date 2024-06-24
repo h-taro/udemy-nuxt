@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["@/assets/styles/main.scss"],
-  ssr: true,
+  ssr: false,
   vite: {
     plugins: [Components({ resolvers: [NaiveUiResolver()] })],
   },
