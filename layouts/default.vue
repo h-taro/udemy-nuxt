@@ -31,15 +31,16 @@ import {
   NMenu,
   type MenuOption,
 } from "naive-ui";
+import { RouterLink } from "vue-router";
 
 const menuOptions: MenuOption[] = [
   {
     key: "users",
-    label: "Users",
+    label: () => h(RouterLink, { to: "/users" }, { default: () => "Users" }),
   },
   {
     key: "posts",
-    label: "Posts",
+    label: () => h(RouterLink, { to: "/posts" }, { default: () => "Posts" }),
   },
 ];
 </script>
