@@ -51,13 +51,14 @@ const rules: FormRules = {
 };
 
 const api = useApi();
+const authStore = useAuthStore();
 
 const login = async () => {
   try {
     await formRef.value?.validate();
 
     const res = await api<User>(`/users/${formValue.value.id}`);
-    console.log(res);
+    authStore.setUser(res);
   } catch (error) {
     console.error(error);
   }

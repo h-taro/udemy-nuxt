@@ -14,4 +14,8 @@ export default defineNuxtConfig({
   vite: {
     plugins: [Components({ resolvers: [NaiveUiResolver()] })],
   },
+  modules: ["@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt"],
+  imports: {
+    dirs: ["stores"],
+  },
 });
