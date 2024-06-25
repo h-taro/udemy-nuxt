@@ -6,12 +6,11 @@
         <span class="text-[14px]">新規登録</span>
       </NButton>
     </div>
-    <NDataTable
-      remote
+    <AtomsDataTable
       v-if="users"
       :data="users"
       :columns="columns"
-      :row-props="rowProps"
+      @select="router.push(`/users/${$event.id}`)"
     />
   </div>
 </template>
@@ -29,13 +28,6 @@ const api = useApi();
 const router = useRouter();
 
 const { data: users } = useAsyncData<User[]>(() => api("/users"));
-
-const rowProps: (row: User) => HTMLAttributes = (row) => ({
-  style: {
-    cursor: "pointer",
-  },
-  onClick: () => router.push(`/users/${row.id}`),
-});
 
 const columns = computed<DataTableColumns<User>>(() => [
   {

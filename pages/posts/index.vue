@@ -1,7 +1,13 @@
 <template>
   <div class="px-[40px] py-[32px] flex flex-col gap-[32px]">
     <span class="text-[24px] font-bold">Posts</span>
-    <NDataTable remote v-if="posts" :data="posts" :columns="columns" />
+    <!-- <NDataTable remote v-if="posts" :data="posts" :columns="columns" /> -->
+    <AtomsDataTable
+      v-if="posts"
+      :data="posts"
+      :columns="columns"
+      @select="router.push(`/posts/${$event.id}`)"
+    />
   </div>
 </template>
 
@@ -11,9 +17,11 @@ import type { Post } from "~/models/post";
 
 definePageMeta({
   requiresAuth: true,
-})
+});
 
 const api = useApi();
+const router = useRouter();
+
 const { data: posts } = useAsyncData<Post[]>(() => api("/posts"));
 
 const columns = computed<DataTableColumns<Post>>(() => [
