@@ -22,6 +22,12 @@ import {
   type FormInst,
   type FormRules,
 } from "naive-ui";
+import type { User } from "~/models/user";
+
+interface Props {
+  user: User | null;
+}
+const props = defineProps<Props>();
 
 export interface UserFormValue {
   name: string;
@@ -58,4 +64,17 @@ defineExpose<UserFormInst>({
     return formValue.value;
   },
 });
+
+watch(
+  () => props.user,
+  () => {
+    if (props.user) {
+      formValue.value = {
+        name: props.user.name,
+        email: props.user.email,
+        phone: props.user.phone,
+      };
+    }
+  }
+);
 </script>

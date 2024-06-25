@@ -1,7 +1,7 @@
 <template>
   <div class="px-[40px] py-[32px] flex flex-col gap-[32px]">
     <span class="text-[24px] font-bold">新規登録</span>
-    <SectionUserForm ref="formRef" />
+    <SectionUserForm ref="formRef" :user="null" />
     <div class="flex flex-row items-center justify-end">
       <NButton @click="createUser">
         <span class="text-[14px]">新規登録</span>
