@@ -43,12 +43,27 @@ const userId = computed<string>(() =>
 
 const { data: user } = useAsyncData<User>(() => api(`/users/${userId.value}`));
 
+const deleteUser = async () => {
+  try {
+    await api(`/users/${userId.value}`, {
+      method: "DELETE",
+    });
+
+    router.push("/users");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const openDialog = () => {
   dialog.warning({
     title: "削除",
     content: "本当に削除しますか？",
     positiveText: "削除",
     negativeText: "キャンセル",
+    onPositiveClick: async () => {
+      await deleteUser();
+    },
   });
 };
 </script>
