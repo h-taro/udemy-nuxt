@@ -27,6 +27,7 @@ import type { User } from "~/models/user";
 
 definePageMeta({
   layout: "static",
+  requiresAuth: false,
 });
 
 interface FormValue {

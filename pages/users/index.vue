@@ -14,6 +14,10 @@
 import { NButton, NDataTable, type DataTableColumns } from "naive-ui";
 import type { User } from "~/models/user";
 
+definePageMeta({
+  requiresAuth: true,
+})
+
 const api = useApi();
 const { data: users } = useAsyncData<User[]>(() => api("/users"));
 
