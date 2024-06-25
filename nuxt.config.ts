@@ -18,4 +18,5 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["stores"],
   },
+  plugins: ["@/plugins/naive"],
 });
