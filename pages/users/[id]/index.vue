@@ -12,7 +12,9 @@
       </div>
     </div>
     <NTabs>
-      <NTabPane name="basic"> </NTabPane>
+      <NTabPane name="basic">
+        <SectionUserBasic :user="user" />
+      </NTabPane>
       <NTabPane name="posts"> </NTabPane>
       <NTabPane name="albums"> </NTabPane>
       <NTabPane name="todos"> </NTabPane>
