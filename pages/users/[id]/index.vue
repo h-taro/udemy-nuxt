@@ -21,7 +21,9 @@
       <NTabPane name="albums">
         <SectionUserAlbums :user="user" />
       </NTabPane>
-      <NTabPane name="todos"> </NTabPane>
+      <NTabPane name="todos">
+        <SectionUserTodos :user="user" />
+      </NTabPane>
     </NTabs>
   </div>
 </template>
