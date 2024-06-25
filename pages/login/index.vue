@@ -51,6 +51,7 @@ const rules: FormRules = {
 };
 
 const api = useApi();
+const router = useRouter();
 const authStore = useAuthStore();
 
 const login = async () => {
@@ -59,6 +60,7 @@ const login = async () => {
 
     const res = await api<User>(`/users/${formValue.value.id}`);
     authStore.setUser(res);
+    router.push("/users");
   } catch (error) {
     console.error(error);
   }
