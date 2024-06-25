@@ -6,8 +6,8 @@
         <NButton @click="router.push(`/users/${user?.id}/edit`)">
           <span class="text-[14px]">編集</span>
         </NButton>
-        <NButton>
-          <span class="text-[14px]">編集</span>
+        <NButton @click="openDialog">
+          <span class="text-[14px]">削除</span>
         </NButton>
       </div>
     </div>
@@ -35,10 +35,20 @@ import type { User } from "~/models/user";
 const api = useApi();
 const route = useRoute();
 const router = useRouter();
+const dialog = useDialog();
 
 const userId = computed<string>(() =>
   decodeURIComponent(String(route.params.id))
 );
 
 const { data: user } = useAsyncData<User>(() => api(`/users/${userId.value}`));
+
+const openDialog = () => {
+  dialog.warning({
+    title: "削除",
+    content: "本当に削除しますか？",
+    positiveText: "削除",
+    negativeText: "キャンセル",
+  });
+};
 </script>
