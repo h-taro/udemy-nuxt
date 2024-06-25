@@ -18,6 +18,7 @@ export const useAuthStore = defineStore(
     };
     const clearUser = () => {
       user.value = undefined;
+      navigateTo("/login");
     };
 
     return {

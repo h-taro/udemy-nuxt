@@ -8,7 +8,7 @@
         <div class="py-[24px] px-[40px] flex flex-row items-center justify-end">
           <div class="flex flex-row items-center gap-[12px]">
             <span class="text-[14px]">{{ authStore.user?.name }}</span>
-            <NButton>
+            <NButton @click="authStore.clearUser">
               <span class="text-[14px]">ログアウト</span>
             </NButton>
           </div>
