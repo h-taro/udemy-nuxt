@@ -2,7 +2,7 @@
   <div class="px-[40px] py-[32px] flex flex-col gap-[32px]">
     <div class="flex flex-row items-center justify-between">
       <span class="text-[24px] font-bold">Users</span>
-      <NButton>
+      <NButton @click="router.push('/users/new')">
         <span class="text-[14px]">新規登録</span>
       </NButton>
     </div>
