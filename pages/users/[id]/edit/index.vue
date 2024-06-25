@@ -3,7 +3,7 @@
     <span class="text-[24px] font-bold">編集</span>
     <SectionUserForm ref="formRef" :user="user" />
     <div class="flex flex-row items-center justify-end">
-      <NButton>
+      <NButton @click="updateUser">
         <span class="text-[14px]">編集</span>
       </NButton>
     </div>
@@ -26,4 +26,22 @@ const userId = computed<string>(() =>
 const formRef = ref<UserFormInst>();
 
 const { data: user } = useAsyncData<User>(() => api(`/users/${userId.value}`));
+
+const updateUser = async () => {
+  try {
+    const formValue = await formRef.value?.submit();
+    if (!formValue) {
+      return;
+    }
+
+    await api(`/users/${userId.value}`, {
+      method: "PATCH",
+      body: JSON.stringify(formValue),
+    });
+
+    router.push(`/users/${userId.value}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
 </script>
