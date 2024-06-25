@@ -3,7 +3,7 @@
     <div class="flex flex-row items-center justify-between">
       <span class="text-[24px] font-bold">{{ user?.name }}</span>
       <div class="flex flex-row items-center gap-[12px]">
-        <NButton>
+        <NButton @click="router.push(`/users/${user?.id}/edit`)">
           <span class="text-[14px]">編集</span>
         </NButton>
         <NButton>
@@ -34,6 +34,7 @@ import type { User } from "~/models/user";
 
 const api = useApi();
 const route = useRoute();
+const router = useRouter();
 
 const userId = computed<string>(() =>
   decodeURIComponent(String(route.params.id))
